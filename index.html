@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script data-require="angular.js@*" data-semver="1.2.25" src="https://code.angularjs.org/1.2.25/angular.js"></script>
+    <script data-require="ui-router@*" data-semver="0.2.15" src="https://rawgit.com/angular-ui/ui-router/0.2.15/release/angular-ui-router.js"></script>
+    <script src="/js/main.js"></script>
+    <link rel="stylesheet" href="/css/styles.css" />
+    <title>Plunk demonstrating ui-router issue</title>
+    <base href="/" />
+  </head>
+
+  <body ng-app="demonstrateissue">
+      
+      <div ui-view>ui-view not populated</div>  
+    
+      <div class="header">
+        Current URL: <b>{{$location.url() }}</b> <br>
+        Current State: <b>{{$state.current.name }}</b> <br>
+        Current Params: <b>{{$state.params | json }}</b><br>
+        Go to state: <state-selector></state-selector>
+      </div>
+      
+      <div ng-controller="issueController">
+        <button ng-click="$state.go('people.add')">Go to child state</button>
+        <button ng-click="$state.go('^')">Go to parent state</button>
+      </div>
+  </body>
+</html>
